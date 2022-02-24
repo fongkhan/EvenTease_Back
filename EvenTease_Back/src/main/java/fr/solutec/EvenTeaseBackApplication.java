@@ -26,7 +26,7 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		System.out.println("**************************** Début lancement ****************************");
 		
 		DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
-		User u1 = new User(null, "fongkhan", "test", "fong.vu@hotmail.fr", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.");
+		User u1 = new User(null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.");
 		userRepo.save(u1);
 	}
 
