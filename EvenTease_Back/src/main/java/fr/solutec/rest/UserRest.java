@@ -16,12 +16,12 @@ public class UserRest {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@PostMapping("user/connect")
+	@PostMapping("connection")
 	public Optional<User> login(@RequestBody User p){
 		return userRepo.findByLoginAndPassword(p.getLogin(), p.getPassword());
 	}
 	
-	@PostMapping("inscription")
+	@PostMapping("sign-in")
 	public User Inscription(@RequestBody User p){
 		return userRepo.save(p);
 	}
