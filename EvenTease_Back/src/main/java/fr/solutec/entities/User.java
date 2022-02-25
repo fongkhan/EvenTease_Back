@@ -20,21 +20,20 @@ public class User {
 	private Long id;
     @Column(unique=true, nullable = false)
 	private String login;
-    @Column(nullable=false)
-	private String password;
-    
     @Column(unique=true, nullable = false)
 	public String mail;
+    @Column(nullable=false)
+	private String password;
     @Column(nullable=false)
 	private String surname;
     @Column(nullable=false)
 	private String name;
-    @Column(nullable=false) @Temporal(TemporalType.DATE)
-	private Date birthDate;
     
+    @Temporal(TemporalType.DATE)
+	private Date birthDate;
     private String phone;
     private String zipCode;
     private String town;
     private String description;
-    
+    private Boolean isPublic;
 }
