@@ -37,9 +37,9 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true);
 		userRepo.save(u2);
 		
-		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, u1);
+		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, u1, "On va se cramer ensemble");
 		eventRepo.save(e1);
-		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true, u2);
+		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true, u2, "fait attention à ton petit cul");
 		eventRepo.save(e2);
 	}
 

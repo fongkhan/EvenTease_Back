@@ -28,4 +28,5 @@ public class Event {
 	
 	@ManyToOne
 	private User organizer;
+	private String description;
 }
