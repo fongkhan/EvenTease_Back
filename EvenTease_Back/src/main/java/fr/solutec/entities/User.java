@@ -35,4 +35,5 @@ public class User {
     private String zipCode;
     private String town;
     private String description;
+    private Boolean isPublic;
 }
