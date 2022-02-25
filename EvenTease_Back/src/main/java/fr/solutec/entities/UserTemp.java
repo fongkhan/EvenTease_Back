@@ -30,13 +30,14 @@ import lombok.NoArgsConstructor;
 		private String surname;
 	    
 		private String name;
-	    @Column(nullable=false) @Temporal(TemporalType.DATE)
+	    @Temporal(TemporalType.DATE)
 		private Date birthDate;
 	    
 	    private String phone;
 	    private String zipCode;
 	    private String town;
 	    private String description;
+	    private Boolean isPublic;
 	    @Column(nullable=true)
 	    private int codeVerif;
 	    
