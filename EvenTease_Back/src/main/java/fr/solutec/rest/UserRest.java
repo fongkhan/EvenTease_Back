@@ -16,18 +16,31 @@ public class UserRest {
 	@Autowired
 	private UserRepository userRepo;
 	
-	@PostMapping("connection-login")
-	public Optional<User> login(@RequestBody User p){
-		return userRepo.findByLoginAndPassword(p.getLogin(), p.getPassword());
-	}
-	
-	@PostMapping("connection-mail")
-	public Optional<User> loginmail(@RequestBody User p){
-		return userRepo.findByMailAndPassword(p.getMail(), p.getPassword());
-	}
-	
+	// _________________ Inscription ___________________
 	@PostMapping("sign-in")
 	public User Inscription(@RequestBody User p){
 		return userRepo.save(p);
 	}
+	// _________________ FIN Inscription ___________________
+	// _________________ connection ___________________
+	@PostMapping("connection")
+	public Optional<User> connection(@RequestBody User p){
+		Optional<User> col = cologin(p);
+		Optional<User> com = comail(p);
+		if(col.isPresent() == false) {
+			return com;
+		} else {
+			return col;
+		}
+	}
+	public Optional<User> cologin(@RequestBody User p){
+		return userRepo.findByLoginAndPassword(p.getLogin(), p.getPassword());
+	}
+	public Optional<User> comail(@RequestBody User p){
+		return userRepo.findByMailAndPassword(p.getMail(), p.getPassword());
+	}
+	// _________________ FIN connection ___________________
+	
+	
+	
 }

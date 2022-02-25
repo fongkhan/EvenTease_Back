@@ -28,9 +28,9 @@ public class User {
 	private String surname;
     @Column(nullable=false)
 	private String name;
-    @Column(nullable=false) @Temporal(TemporalType.DATE)
-	private Date birthDate;
     
+    @Temporal(TemporalType.DATE)
+	private Date birthDate;
     private String phone;
     private String zipCode;
     private String town;
