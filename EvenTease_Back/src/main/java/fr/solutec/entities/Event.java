@@ -24,6 +24,7 @@ public class Event {
 	@Temporal(TemporalType.DATE)
 	private Date dateEvent; 
 	private String locationEvent;
+	private Boolean isPublic;
 	
 	@ManyToOne
 	private User organizer;
