@@ -98,7 +98,12 @@ public class UserRest {
 		return userRepo.trouverPersonBySurnameAndName(surname, name);
 	}
 	// _________________ FIN recherche User ___________________
-	
-	
+	// _________________ Participe a un event ___________________
+	@PutMapping("user/participate/{id}")
+	public User participateEvent(@PathVariable Long id,@RequestBody User u) {
+		u.setId(id);
+		return userRepo.save(u);
+	}
+	// _________________ Participe a un event ___________________
 	
 }
