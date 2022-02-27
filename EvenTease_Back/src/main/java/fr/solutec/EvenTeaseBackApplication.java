@@ -40,14 +40,22 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		userRepo.save(u1);
 		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true, null);
 		userRepo.save(u2);
+		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true, null);
+		userRepo.save(u3);
+		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("24/05/1999"), "0662435798", "72111", "Montcuq", "Hello,\nvous connaissez Shotgun ?", true, null);
+		userRepo.save(u4);
 		
-		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null);
+		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null, null);
 		eventRepo.save(e1);
-		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null);
+		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null);
 		eventRepo.save(e2);
 		
 		UserParticipateEvent upe1 = new UserParticipateEvent(null, u1, e2,true, false);
 		upeRepo.save(upe1);
+		UserParticipateEvent upe2 = new UserParticipateEvent(null, u3, e2,true, false);
+		upeRepo.save(upe2);
+		UserParticipateEvent upe3 = new UserParticipateEvent(null, u4, e2,true, false);
+		upeRepo.save(upe3);
 	}
 	
 
