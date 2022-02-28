@@ -54,6 +54,10 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		eventRepo.save(e1);
 		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null);
 		eventRepo.save(e2);
+		Event e3 = new Event(null, "public party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e3);
+		Event e4 = new Event(null, "public party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e4);
 		
 		UserParticipateEvent upe1 = new UserParticipateEvent(null, u1, e2,true, false);
 		upeRepo.save(upe1);
