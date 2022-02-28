@@ -6,15 +6,19 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
-@Entity
+@Entity @Table(name="Users")
 public class User {
 	@Id @GeneratedValue
 	private Long id;
@@ -36,4 +40,7 @@ public class User {
     private String town;
     private String description;
     private Boolean isPublic;
+    @ManyToOne
+    @JoinColumn(name= "group_id")
+    private Group group;
 }
