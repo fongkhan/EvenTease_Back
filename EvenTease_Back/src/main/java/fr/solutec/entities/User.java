@@ -11,6 +11,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,6 +23,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
 @Entity
+@Table(name = "Users")
 public class User {
 	@Id @GeneratedValue
 	private Long id;

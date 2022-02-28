@@ -25,10 +25,10 @@ public class Vote {
 	private String question;
 	
 	@OneToMany(mappedBy = "vote")
-	@Column(nullable = false)
+	@Column(nullable = false) @JsonIgnore
 	private Set<VoteAnswer> voteAnswer;
 	
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name = "event_id", nullable = false)
 	private Event event;
 }

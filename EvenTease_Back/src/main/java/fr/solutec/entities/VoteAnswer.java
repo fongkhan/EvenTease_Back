@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,7 +25,8 @@ public class VoteAnswer {
 	@ManyToOne
 	@JoinColumn(name = "vote_id", nullable = false)
 	private Vote vote;
+	private int nbVote;
 	
-	@OneToMany(mappedBy = "voteAnswer")
+	@OneToMany(mappedBy = "voteAnswer") @JsonIgnore
 	private Set<VoteAnswerUser> voteAnswerUser;
 }

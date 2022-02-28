@@ -70,6 +70,7 @@ public class UserRest {
 	@PostMapping("connection")
 	public Optional<User> connection(@RequestBody User p){
 		Optional<User> col = cologin(p);
+		p.setMail(p.getLogin());
 		Optional<User> com = comail(p);
 		if(col.isPresent() == false) {
 			return com;

@@ -1,6 +1,7 @@
 package fr.solutec.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -35,7 +36,7 @@ public class Event {
 	@ManyToOne
 	private User organizer;
 	
-	@OneToMany(mappedBy = "event")
+	@OneToMany(mappedBy = "event") @JsonIgnore
 	private Set<Vote> Vote;
 	
 	@OneToMany(mappedBy = "event") @JsonIgnore
