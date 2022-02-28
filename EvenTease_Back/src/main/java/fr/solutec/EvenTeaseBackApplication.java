@@ -14,18 +14,22 @@ import fr.solutec.entities.UserParticipateEvent;
 import fr.solutec.entities.Vote;
 import fr.solutec.entities.VoteAnswer;
 import fr.solutec.entities.VoteAnswerUser;
+import fr.solutec.entities.UserTemp;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.VoteAnswerRepository;
 import fr.solutec.repository.VoteAnswerUserRepository;
 import fr.solutec.repository.VoteRepository;
+import fr.solutec.repository.UserTempRepository;
 
 @SpringBootApplication
 public class EvenTeaseBackApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private UserTempRepository userTempRepo;
 	@Autowired
 	private EventRepository eventRepo;
 	@Autowired
@@ -62,6 +66,10 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		eventRepo.save(e1);
 		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null);
 		eventRepo.save(e2);
+		Event e3 = new Event(null, "public party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e3);
+		Event e4 = new Event(null, "public party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e4);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
 		UserParticipateEvent upe1 = new UserParticipateEvent(null, u1, e2,true, false);
@@ -79,6 +87,8 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		VoteAnswerUser vau1 = new VoteAnswerUser(null, va1, u1);
 		vauRepo.save(vau1);
 		// ___________ FIN CREATION VOTE A EVENT _____________
+		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
+		userTempRepo.save(utp1);
 	}
 	
 
