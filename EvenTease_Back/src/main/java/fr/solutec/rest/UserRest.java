@@ -40,11 +40,11 @@ public class UserRest {
 	// _________________ FIN ALL USER ___________________
 	
 	// _________________ Inscription ___________________
-	@PostMapping("sign-in/{mail}/{codesaisi}")
-	public User Inscription(@PathVariable String mail, @PathVariable int codesaisi, UserTemp p) throws MessagingException{	
-		UserTemp p1 = userTempRepo.findByMail(mail);
+	@PostMapping("sign-in/confirm")
+	public User Inscription(@RequestBody UserTemp userTemp) throws MessagingException {	
+		UserTemp p1 = userTempRepo.findByMail(userTemp.getMail());
 		
-			if (p1.getCodeVerif() == codesaisi) {
+			if (p1.getCodeVerif() == userTemp.getCodeVerif()) {
 				User user = new User();
 				user.setLogin(p1.getLogin());
 				user.setPassword(p1.getPassword());
@@ -56,7 +56,7 @@ public class UserRest {
 				user.setZipCode(p1.getZipCode());
 				user.setTown(p1.getTown());
 				user.setDescription(p1.getDescription());
-				
+				userTempRepo.delete(p1);
 			return userRepo.save(user);
 			} else {
 				System.out.println("Mauvais code"); 
@@ -98,7 +98,12 @@ public class UserRest {
 		return userRepo.trouverPersonBySurnameAndName(surname, name);
 	}
 	// _________________ FIN recherche User ___________________
-	
-	
+	// _________________ Participe a un event ___________________
+	@PutMapping("user/participate/{id}")
+	public User participateEvent(@PathVariable Long id,@RequestBody User u) {
+		u.setId(id);
+		return userRepo.save(u);
+	}
+	// _________________ Participe a un event ___________________
 	
 }

@@ -7,11 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,23 +19,16 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
 @Entity
-public class Event {
+public class Vote {
 	@Id @GeneratedValue
 	private Long id;
-	@Column(unique=true, nullable = false)
-	private String title;
-	@Temporal(TemporalType.DATE)
-	private Date dateEvent; 
-	private String locationEvent;
-	private Boolean isPublic;
-	private String description;
+	private String question;
+	
+	@OneToMany(mappedBy = "vote")
+	@Column(nullable = false)
+	private Set<VoteAnswer> voteAnswer;
 	
 	@ManyToOne
-	private User organizer;
-	
-	@OneToMany(mappedBy = "event")
-	private Set<Vote> Vote;
-	
-	@OneToMany(mappedBy = "event") @JsonIgnore
-	Set<UserParticipateEvent> participant;
+	@JoinColumn(name = "event_id", nullable = false)
+	private Event event;
 }
