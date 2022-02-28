@@ -11,15 +11,20 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
+import fr.solutec.entities.UserTemp;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
 import fr.solutec.repository.UserRepository;
+import fr.solutec.repository.UserTempRepository;
 
 @SpringBootApplication
 public class EvenTeaseBackApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private UserTempRepository userTempRepo;
 
 	@Autowired
 	private EventRepository eventRepo;
@@ -56,6 +61,9 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe2);
 		UserParticipateEvent upe3 = new UserParticipateEvent(null, u4, e2,true, false);
 		upeRepo.save(upe3);
+		
+		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
+		userTempRepo.save(utp1);
 	}
 	
 
