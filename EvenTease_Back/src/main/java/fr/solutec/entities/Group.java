@@ -3,11 +3,12 @@ package fr.solutec.entities;
 
 import java.util.Set;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -22,8 +23,21 @@ public class Group {
 	private Long id;
 	@ManyToOne
 	private User admin;	
-	@OneToMany(mappedBy = "group")
-	private Set<User> member;
-	private boolean publique;
+	@ManyToMany
+	private Set<User> members;
+//    @JoinTable(
+//  		  name = "groups", 
+//  		  joinColumns = @JoinColumn(name = "user_id"), 
+// 		  inverseJoinColumns = @JoinColumn(name = "group_id"))
+
+	
+//	@OneToMany(mappedBy = "group")
+//	private Set<User> member;
+	
+//    @OneToMany(mappedBy = "group"/*, cascade = {CascadeType.ALL}*/) @JsonIgnore
+//    Set<GroupMember> member;
+//	private boolean publique;
+	
+	
 
 }
