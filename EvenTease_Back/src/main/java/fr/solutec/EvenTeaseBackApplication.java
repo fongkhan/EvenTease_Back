@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.FriendRequest;
+import fr.solutec.entities.ShopListAnswerUser;
+import fr.solutec.entities.ShoppingList;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
 import fr.solutec.entities.Vote;
@@ -22,7 +24,8 @@ import fr.solutec.repository.EventRepository;
 
 import fr.solutec.repository.FriendRequestRepository;
 import fr.solutec.repository.GroupRepository;
-
+import fr.solutec.repository.ShopListAnswerUserRepository;
+import fr.solutec.repository.ShoppingListRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.VoteAnswerUserRepository;
@@ -49,7 +52,10 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	private VoteRepository voteRepo;
 	@Autowired
 	private VoteAnswerUserRepository vauRepo;
-	
+	@Autowired
+	private ShoppingListRepository slRepo;
+	@Autowired
+	private ShopListAnswerUserRepository slauRepo;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(EvenTeaseBackApplication.class, args);
@@ -71,13 +77,13 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		userRepo.save(u4);
 		// _________________ FIN CREATION USER ___________________
 		// _________________ CREATION EVENT ___________________
-		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null, null);
+		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null, null, null);
 		eventRepo.save(e1);
-		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null);
+		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null, null);
 		eventRepo.save(e2);
-		Event e3 = new Event(null, "public party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		Event e3 = new Event(null, "public party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
 		eventRepo.save(e3);
-		Event e4 = new Event(null, "public party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		Event e4 = new Event(null, "public party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
 		eventRepo.save(e4);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
@@ -95,6 +101,16 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		voteRepo.save(v1);
 		VoteAnswerUser vau1 = new VoteAnswerUser(null, (long) 1, u1, v1);
 		vauRepo.save(vau1);
+		// ___________ FIN CREATION VOTE A EVENT _____________
+		// ___________ CREATION shopping list A EVENT _____________
+		List<String> shopListAnswer = new ArrayList<>();
+		shopListAnswer.add("Soda");shopListAnswer.add("Jeagermeister");
+		List<String> shopListPrixAnswer = new ArrayList<>();
+		shopListPrixAnswer.add("5");shopListPrixAnswer.add("20");
+		ShoppingList sl1 = new ShoppingList(null, "Boissons", shopListAnswer, shopListPrixAnswer, e1);
+		slRepo.save(sl1);
+		ShopListAnswerUser slau1 = new ShopListAnswerUser(null,2, u2, sl1);
+		slauRepo.save(slau1);
 		// ___________ FIN CREATION VOTE A EVENT _____________
 		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
 		userTempRepo.save(utp1);

@@ -21,8 +21,8 @@ public class VoteAnswerUserRest {
 		return vauRepo.findAll();
 	}
 	
-	@GetMapping("event/vote/answer/user/add/{id}")
-	public VoteAnswerUser addVoteAnswerUser(@PathVariable Long id, @RequestBody User user) {
-		return null;
+	@GetMapping("event/vote/answer/user/add")
+	public VoteAnswerUser addVoteAnswerUser(@RequestBody VoteAnswerUser vau) {
+		return vauRepo.save(vau);
 	}
 }

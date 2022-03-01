@@ -41,5 +41,8 @@ public class Event {
 	private Set<Vote> Vote;
 	
 	@OneToMany(mappedBy = "event") @JsonIgnore
+	private Set<ShoppingList> ShoppingList;
+	
+	@OneToMany(mappedBy = "event") @JsonIgnore
 	Set<UserParticipateEvent> participant;
 }
