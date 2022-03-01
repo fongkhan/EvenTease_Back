@@ -21,23 +21,10 @@ import lombok.NoArgsConstructor;
 public class Group {
 	@Id @GeneratedValue
 	private Long id;
+	private String Name;
 	@ManyToOne
 	private User admin;	
 	@ManyToMany
 	private Set<User> members;
-//    @JoinTable(
-//  		  name = "groups", 
-//  		  joinColumns = @JoinColumn(name = "user_id"), 
-// 		  inverseJoinColumns = @JoinColumn(name = "group_id"))
-
-	
-//	@OneToMany(mappedBy = "group")
-//	private Set<User> member;
-	
-//    @OneToMany(mappedBy = "group"/*, cascade = {CascadeType.ALL}*/) @JsonIgnore
-//    Set<GroupMember> member;
-//	private boolean publique;
-	
-	
 
 }
