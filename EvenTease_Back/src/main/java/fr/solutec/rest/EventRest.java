@@ -40,5 +40,10 @@ public class EventRest {
 	public List<Event> ListEventPublic(){
 		return eventRepo.findByIsPublic(true);
 	}
-
+	
+	@PostMapping("event/organizer")
+	public List<Event> ListEventOrganizer(@RequestBody User organizer) {
+		return eventRepo.findByOrganizer(organizer);
+	}
+	
 }
