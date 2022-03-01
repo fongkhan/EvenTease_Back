@@ -26,7 +26,7 @@ public class UserParticipateEventRest {
 	
 	@PostMapping("event/participant/user")
 	public List<UserParticipateEvent> getParticipantbyUser(@RequestBody User user){
-		return upeRepo.findByUser(user);
+		return upeRepo.findByUser(user); 
 	}
 	
 	@PostMapping("event/participant/event")

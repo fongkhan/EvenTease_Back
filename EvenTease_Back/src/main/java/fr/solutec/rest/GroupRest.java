@@ -26,7 +26,7 @@ public class GroupRest {
 
 	
 	// _________________ DEBUT CREATION GROUPE ___________________
-	@PostMapping("group/add")
+	@PostMapping("group/create")
 	public Group addGroup(@RequestBody Group g) {
 		return groupRepo.save(g);
 	}
