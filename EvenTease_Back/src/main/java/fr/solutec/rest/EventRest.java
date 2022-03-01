@@ -48,8 +48,9 @@ public class EventRest {
 	}
 	
 	@PostMapping("event/organizer")
-    public List<Event> ListEventOrganizer(@RequestBody User organizer) {
-        return eventRepo.findByOrganizer(organizer);
-    }
+	public List<Event> ListEventOrganizer(@RequestBody User organizer) {
+		return eventRepo.findByOrganizer(organizer);
+	}
+	
 
 }

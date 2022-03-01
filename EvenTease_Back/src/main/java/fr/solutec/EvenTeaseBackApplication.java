@@ -67,7 +67,7 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		userRepo.save(u2);
 		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true, null);
 		userRepo.save(u3);
-		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("24/05/1999"), "0662435798", "72111", "Montcuq", "Hello,\nvous connaissez Shotgun ?", true, null);
+		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("08/06/1999"), "0662435798", "59114", "Terdeghem", "Hello, vous connaissez Shotgun ? c'est super pratique", true, null);
 		userRepo.save(u4);
 		// _________________ FIN CREATION USER ___________________
 		// _________________ CREATION EVENT ___________________
