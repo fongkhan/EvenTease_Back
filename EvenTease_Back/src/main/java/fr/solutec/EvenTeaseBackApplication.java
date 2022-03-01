@@ -5,18 +5,24 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Event;
+import fr.solutec.entities.FriendRequest;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
 import fr.solutec.entities.Vote;
 import fr.solutec.entities.VoteAnswerUser;
 import fr.solutec.entities.UserTemp;
 import fr.solutec.repository.EventRepository;
+
+import fr.solutec.repository.FriendRequestRepository;
+import fr.solutec.repository.GroupRepository;
+
 import fr.solutec.repository.UserParticipateEventRepository;
 import fr.solutec.repository.UserRepository;
 import fr.solutec.repository.VoteAnswerUserRepository;
@@ -28,10 +34,15 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	
 	@Autowired
 	private UserRepository userRepo;
+
 	@Autowired
 	private UserTempRepository userTempRepo;
+
 	@Autowired
 	private EventRepository eventRepo;
+	
+	@Autowired
+	private FriendRequestRepository FriendRequestRepo;
 	@Autowired
 	private UserParticipateEventRepository upeRepo;
 	@Autowired
@@ -39,15 +50,15 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	@Autowired
 	private VoteAnswerUserRepository vauRepo;
 	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvenTeaseBackApplication.class, args);
 	}
 	
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("**************************** Début lancement ****************************");
-		
-		DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+	System.out.println("**************************** Début lancement ***************************");
+	DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
 		
 		// _________________ CREATION USER ___________________
 		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.", false, null);
@@ -87,6 +98,8 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		// ___________ FIN CREATION VOTE A EVENT _____________
 		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
 		userTempRepo.save(utp1);
+		
+		
 	}
 	
 

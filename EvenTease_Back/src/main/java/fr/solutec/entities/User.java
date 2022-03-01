@@ -22,8 +22,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
-@Entity
-@Table(name = "Users")
+@Entity @Table(name="Users")
 public class User {
 	@Id @GeneratedValue
 	private Long id;
