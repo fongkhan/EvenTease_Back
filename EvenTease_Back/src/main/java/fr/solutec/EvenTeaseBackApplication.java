@@ -2,6 +2,8 @@ package fr.solutec;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -12,13 +14,11 @@ import fr.solutec.entities.Event;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
 import fr.solutec.entities.Vote;
-import fr.solutec.entities.VoteAnswer;
 import fr.solutec.entities.VoteAnswerUser;
 import fr.solutec.entities.UserTemp;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
 import fr.solutec.repository.UserRepository;
-import fr.solutec.repository.VoteAnswerRepository;
 import fr.solutec.repository.VoteAnswerUserRepository;
 import fr.solutec.repository.VoteRepository;
 import fr.solutec.repository.UserTempRepository;
@@ -36,8 +36,6 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	private UserParticipateEventRepository upeRepo;
 	@Autowired
 	private VoteRepository voteRepo;
-	@Autowired
-	private VoteAnswerRepository vaRepo;
 	@Autowired
 	private VoteAnswerUserRepository vauRepo;
 	
@@ -80,11 +78,11 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe3);
 		// ___________ FIN PARTICIPATION USER A EVENT _____________
 		// ___________ CREATION VOTE A EVENT _____________
-		Vote v1 = new Vote(null, "activité après le lazer game", null, e2);
+		List<String> votesAnswer = new ArrayList<>();
+		votesAnswer.add("barbecue");
+		Vote v1 = new Vote(null, "activité après le lazer game", votesAnswer, e2);
 		voteRepo.save(v1);
-		VoteAnswer va1 = new VoteAnswer(null, "partouze chez jacky et michel", v1, 0, null);
-		vaRepo.save(va1);
-		VoteAnswerUser vau1 = new VoteAnswerUser(null, va1, u1);
+		VoteAnswerUser vau1 = new VoteAnswerUser(null, (long) 1, u1, v1);
 		vauRepo.save(vau1);
 		// ___________ FIN CREATION VOTE A EVENT _____________
 		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
