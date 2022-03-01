@@ -1,9 +1,11 @@
 package fr.solutec.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -24,10 +26,8 @@ public class Vote {
 	@Id @GeneratedValue
 	private Long id;
 	private String question;
-	
-	@OneToMany(mappedBy = "vote")
-	@Column(nullable = false) @JsonIgnore
-	private Set<VoteAnswer> voteAnswer;
+	@ElementCollection
+	private List<String> Answer;
 	
 	@ManyToOne 
 	@JoinColumn(name = "event_id", nullable = false)
