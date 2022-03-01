@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 public class VoteAnswerUser {
 	@Id @GeneratedValue
 	private Long id;
-	
-	@ManyToOne
-	@JoinColumn(name = "voteAnswer_id", nullable = false)
-	private VoteAnswer voteAnswer;
+	private Long idAnswer;
 	
 	@ManyToOne
 	private User user;
+	
+	@ManyToOne
+	private Vote vote;
 }
