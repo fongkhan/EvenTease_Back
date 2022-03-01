@@ -75,10 +75,16 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		eventRepo.save(e1);
 		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null);
 		eventRepo.save(e2);
-		Event e3 = new Event(null, "public party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		Event e3 = new Event(null, "maxpea organise 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
 		eventRepo.save(e3);
-		Event e4 = new Event(null, "public party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
 		eventRepo.save(e4);
+		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e5);
+		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e6);
+		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null);
+		eventRepo.save(e7);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
 		UserParticipateEvent upe1 = new UserParticipateEvent(null, u1, e2,true, false);
@@ -87,6 +93,14 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe2);
 		UserParticipateEvent upe3 = new UserParticipateEvent(null, u4, e2,true, false);
 		upeRepo.save(upe3);
+		UserParticipateEvent upe4 = new UserParticipateEvent(null, u2, e5,true, false);
+		upeRepo.save(upe4);
+		
+		UserParticipateEvent upe5 = new UserParticipateEvent(null, u2, e6,true, false);
+		upeRepo.save(upe5);
+		UserParticipateEvent upe6 = new UserParticipateEvent(null, u2, e7,true, false);
+		upeRepo.save(upe6);
+	
 		// ___________ FIN PARTICIPATION USER A EVENT _____________
 		// ___________ CREATION VOTE A EVENT _____________
 		List<String> votesAnswer = new ArrayList<>();
