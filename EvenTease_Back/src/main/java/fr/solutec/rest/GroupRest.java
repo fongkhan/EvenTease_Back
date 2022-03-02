@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.solutec.entities.Group;
+import fr.solutec.entities.Groupe;
 import fr.solutec.entities.User;
 import fr.solutec.repository.GroupRepository;
 
@@ -27,20 +27,20 @@ public class GroupRest {
 	
 	// _________________ DEBUT CREATION GROUPE ___________________
 	@PostMapping("group/create")
-	public Group addGroup(@RequestBody Group g) {
+	public Groupe addGroup(@RequestBody Groupe g) {
 		return groupRepo.save(g);
 	}
 	// _________________ FIN CREATION GROUP ___________________
 	
-	@GetMapping("allgroup")
-	public Iterable<Group> getMyGroup(){
+	@GetMapping("groupe")
+	public Iterable<Groupe> getMyGroup(){
 		
 		return groupRepo.findAll();
 	}
 	
 	// _________________ DEBUT ALL MY_GROUP ___________________
 	@PostMapping("mygroup")
-	public List<Group> getMyGroup(@RequestBody User admin){
+	public List<Groupe> getMyGroup(@RequestBody User admin){
 		
 		return groupRepo.findByAdmin(admin);
 	}
@@ -49,7 +49,7 @@ public class GroupRest {
 	// _________________ DEBUT SUPPRESSION GROUPE ___________________
 	@DeleteMapping("group/{id}")
 	public boolean deleteGroup(@PathVariable Long id) {
-		Optional<Group> g = groupRepo.findById(id);
+		Optional<Groupe> g = groupRepo.findById(id);
 		if (g.isPresent()) {
 			groupRepo.deleteById(id);
 			return true;
@@ -67,7 +67,7 @@ public class GroupRest {
 		return groupRepo.save(g);
 	}*/
 	@PutMapping("group/modify")
-	public Group modifyGroup(@RequestBody Group g) {
+	public Groupe modifyGroup(@RequestBody Groupe g) {
 		return groupRepo.save(g);
 	}
 	// _________________ FIN AJOUTER UN MEMBRE ___________________

@@ -6,12 +6,12 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 
-import fr.solutec.entities.Group;
+import fr.solutec.entities.Groupe;
 import fr.solutec.entities.User;
 
-public interface GroupRepository extends CrudRepository<Group, Long>{
-	public List<Group> findByAdmin(User admin);
-	public Optional<Group> findById(Long id);
+public interface GroupRepository extends CrudRepository<Groupe, Long>{
+	public List<Groupe> findByAdmin(User admin);
+	public Optional<Groupe> findById(Long id);
 	// public List<Group> findByMember(User admin);
 }
 

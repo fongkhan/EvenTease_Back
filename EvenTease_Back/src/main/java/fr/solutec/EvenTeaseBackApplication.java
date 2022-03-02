@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.FriendRequest;
+import fr.solutec.entities.Groupe;
 import fr.solutec.entities.ShopListAnswerUser;
 import fr.solutec.entities.ShoppingList;
 import fr.solutec.entities.User;
@@ -57,6 +58,9 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	@Autowired
 	private ShopListAnswerUserRepository slauRepo;
 	
+	@Autowired
+	private GroupRepository groupRepo;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvenTeaseBackApplication.class, args);
 	}
@@ -67,13 +71,13 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
 		
 		// _________________ CREATION USER ___________________
-		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.", false, null);
+		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.", false);
 		userRepo.save(u1);
-		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true, null);
+		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true);
 		userRepo.save(u2);
-		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true, null);
+		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true);
 		userRepo.save(u3);
-		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("08/06/1999"), "0662435798", "59114", "Terdeghem", "Hello, vous connaissez Shotgun ? c'est super pratique", true, null);
+		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("08/06/1999"), "0662435798", "59114", "Terdeghem", "Hello, vous connaissez Shotgun ? c'est super pratique", true);
 		userRepo.save(u4);
 		// _________________ FIN CREATION USER ___________________
 		// _________________ CREATION EVENT ___________________
@@ -130,6 +134,35 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		userTempRepo.save(utp1);
 		
 		
+		Groupe g = new Groupe(null, "Ukraine", u1, null);
+		groupRepo.save(g);
+		
+		/*
+		 * Attention, l'idéal aurait été de faire une recherche avec le nom du groupe mais
+		 * vu qu'on peut avoir plusieurs groupes avec le même nom,
+		 * j'ai choisi la facilité en recherchant par id ; 
+		 * du coup il faut être sûr que un groupe a bien cet id pour que ça marche
+		 */
+		addMembreToGroup("fongkhan", (long) 23);
+		addMembreToGroup("youssb", (long) 23);
+
+	}
+	
+	public void addMembreToGroup(String login, Long id) {
+		Optional<Groupe> g = groupRepo.findById(id);
+		if(g.isEmpty()) {
+			System.out.println("l'id du groupe entré n'existe pas");
+		}
+		else {
+			Optional<User> u = userRepo.findByLogin(login);
+			if(u.isEmpty()) {
+				System.out.println("l'user que vous voulez rajouter au groupe n'existe pas");
+			}
+			else {
+				g.get().getMembres().add(u.get());
+				groupRepo.save(g.get());
+			}
+		}
 	}
 	
 
