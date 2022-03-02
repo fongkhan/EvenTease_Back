@@ -26,9 +26,8 @@ public class EventRest {
 		return eventRepo.save(e);
 	}
 	
-	@PutMapping("event/update/{id}")
-	public Event updateEvent(@PathVariable Long id,@RequestBody Event e) {
-		e.setId(id);
+	@PutMapping("event/update")
+	public Event updateEvent(@RequestBody Event e) {
 		return eventRepo.save(e);
 	}
 	
