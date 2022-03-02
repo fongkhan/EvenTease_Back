@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class Groupe {
 	@Id @GeneratedValue
 	private Long id;
-	private String Name;
+	private String name;
 
 	@ManyToOne
 	private User admin;

@@ -156,12 +156,12 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	
 	public void addMembreToGroup(String login, Long id) {
 		Optional<Groupe> g = groupRepo.findById(id);
-		if(!g.isPresent()) {
+		if(g.isEmpty()) {
 			System.out.println("l'id du groupe entré n'existe pas, vérifier les id des groupe et modifier le numero dans addMembreToGroup()");
 		}
 		else {
 			Optional<User> u = userRepo.findByLogin(login);
-			if(!u.isPresent()) {
+			if(g.isEmpty()) {
 				System.out.println("l'user que vous voulez rajouter au groupe n'existe pas");
 			}
 			else {
