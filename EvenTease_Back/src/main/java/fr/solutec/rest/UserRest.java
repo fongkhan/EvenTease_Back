@@ -38,7 +38,10 @@ public class UserRest {
 		return userRepo.findAll();
 	}
 	// _________________ FIN ALL USER ___________________
-	
+	@PostMapping("user/create")
+	public User addUser(@RequestBody User u) {
+		return userRepo.save(u);
+	}
 	// _________________ Inscription ___________________
 	@PostMapping("sign-in/confirm")
 	public User Inscription(@RequestBody UserTemp userTemp) throws MessagingException {	
