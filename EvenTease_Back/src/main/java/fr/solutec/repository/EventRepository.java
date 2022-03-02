@@ -11,11 +11,13 @@ import fr.solutec.entities.User;
 public interface EventRepository extends CrudRepository<Event, Long>{
 	public List<Event> findByTitle(String Title);
 	public List<Event> findByIsPublic(Boolean isPublic);
-	public List<Event> findByOrganizer(User organizer);
+
 	
 
 	// JPQL
-	@Query(value = "SELECT e FROM Event e WHERE e.organizer.login LIKE ?1%")
+	@Query(value = "SELECT e FROM Event e WHERE e.organizer.login LIKE ?1")
 	public List<Event> trouverEventByOrganizerLogin(String login);
+	
+	public List<Event> findByOrganizer(User organizer);
 
 }

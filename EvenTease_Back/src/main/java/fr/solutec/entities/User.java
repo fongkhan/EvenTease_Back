@@ -1,6 +1,7 @@
 package fr.solutec.entities;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -45,6 +46,6 @@ public class User {
     private String description;
     private Boolean isPublic;
     
-    @OneToMany(mappedBy = "user") @JsonIgnore
-    Set<UserParticipateEvent> participant;
+//    @OneToMany(mappedBy = "user") @JsonIgnore
+//    Set<UserParticipateEvent> participant;
 }

@@ -1,6 +1,7 @@
 package fr.solutec.rest;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -36,6 +37,11 @@ public class EventRest {
 		return eventRepo.findAll();
 	}
 	
+	@PostMapping("eventid")
+	public Optional<Event> getEventById(@RequestBody Long id){
+		return eventRepo.findById(id);
+	}
+	
 	@GetMapping("event/public")
 	public List<Event> ListEventPublic(){
 		return eventRepo.findByIsPublic(true);
@@ -46,9 +52,5 @@ public class EventRest {
 		return eventRepo.findByOrganizer(organizer);
 	}
 	
-//	@PostMapping("event/participant")
-//	public List<Event> ListEventParticipant(@RequestBody User participant) {
-//		return eventRepo.findByParticipant(participant);
-//	}
-	
+
 }
