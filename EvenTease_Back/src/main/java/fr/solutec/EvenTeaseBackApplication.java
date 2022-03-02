@@ -57,6 +57,7 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	@Autowired
 	private ShopListAnswerUserRepository slauRepo;
 	
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvenTeaseBackApplication.class, args);
 	}
@@ -121,7 +122,7 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		shopListAnswer.add("Soda");shopListAnswer.add("Jeagermeister");
 		List<String> shopListPrixAnswer = new ArrayList<>();
 		shopListPrixAnswer.add("5");shopListPrixAnswer.add("20");
-		ShoppingList sl1 = new ShoppingList(null, "Boissons", shopListAnswer, shopListPrixAnswer, e1);
+		ShoppingList sl1 = new ShoppingList(null, u1, "Boissons", shopListAnswer, shopListPrixAnswer, e1);
 		slRepo.save(sl1);
 		ShopListAnswerUser slau1 = new ShopListAnswerUser(null,2, u2, sl1);
 		slauRepo.save(slau1);
@@ -129,7 +130,12 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		UserTemp utp1 = new UserTemp(null, "gadjo", "gadjo", "gadjo@gmail.com", "gadjo", "gadjo", null, null, null, null, null, null,8686);
 		userTempRepo.save(utp1);
 		
-		
+		FriendRequest fr1 = new FriendRequest(null, u1, u2, 1);
+		FriendRequestRepo.save(fr1);
+		FriendRequest fr2 = new FriendRequest(null, u2, u3, 2);
+		FriendRequestRepo.save(fr2);
+		FriendRequest fr3 = new FriendRequest(null, u3, u4, 3);
+		FriendRequestRepo.save(fr3);
 	}
 
 

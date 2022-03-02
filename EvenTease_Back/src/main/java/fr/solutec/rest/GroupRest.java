@@ -1,4 +1,4 @@
-  package fr.solutec.rest;
+package fr.solutec.rest;
 
 
 import java.util.List;
@@ -26,7 +26,7 @@ public class GroupRest {
 
 	
 	// _________________ DEBUT CREATION GROUPE ___________________
-	@PostMapping("group/create")
+	@PostMapping("group")
 	public Group addGroup(@RequestBody Group g) {
 		return groupRepo.save(g);
 	}

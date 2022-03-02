@@ -12,4 +12,6 @@ public interface FriendRequestRepository extends CrudRepository<FriendRequest, L
 	public List<FriendRequest> findByDemandeurId(Long id);
 	public List<FriendRequest> findByReceveur(User u);
 	public Optional<FriendRequest> findById(Long id);
+	public Iterable<FriendRequest> findByDemandeurIdOrReceveurId(Long id, Long id2);
+
 }

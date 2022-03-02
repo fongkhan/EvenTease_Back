@@ -20,6 +20,8 @@ import lombok.NoArgsConstructor;
 public class ShoppingList {
 	@Id @GeneratedValue
 	private Long id;
+	@ManyToOne
+	private User createur;
 	private String name;
 	@ElementCollection
 	private List<String> Achat;
