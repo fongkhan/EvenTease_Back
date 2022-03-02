@@ -87,8 +87,9 @@ public class UserRest {
 	// _________________ FIN connection ___________________
 	
 	// _________________ modif User ___________________
-	@PutMapping("user/update")
-	public User updateUser(@RequestBody User u) {
+	@PutMapping("user/update/{id}")
+	public User updateUser(@RequestBody User u, @PathVariable Long id) {
+		u.setId(id);
 		return userRepo.save(u);
 	}
 	// _________________ FIN modif User ___________________
