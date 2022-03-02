@@ -46,6 +46,6 @@ public class User {
     private String description;
     private Boolean isPublic;
     
-    @OneToMany(mappedBy = "user") @JsonIgnore
-    Set<UserParticipateEvent> participant;
+//    @OneToMany(mappedBy = "user") @JsonIgnore
+//    Set<UserParticipateEvent> participant;
 }
