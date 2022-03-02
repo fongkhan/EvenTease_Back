@@ -85,11 +85,11 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		eventRepo.save(e3);
 		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
 		eventRepo.save(e4);
-		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u1, null, null, null);
 		eventRepo.save(e5);
-		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u3, null, null, null);
 		eventRepo.save(e6);
-		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u4, null, null, null);
 		eventRepo.save(e7);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
@@ -106,6 +106,12 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe5);
 		UserParticipateEvent upe6 = new UserParticipateEvent(null, u2, e7,true, false);
 		upeRepo.save(upe6);
+		UserParticipateEvent upe7 = new UserParticipateEvent(null, u4, e6,true, false);
+		upeRepo.save(upe7);
+		UserParticipateEvent upe8 = new UserParticipateEvent(null, u3, e6,true, false);
+		upeRepo.save(upe8);
+		UserParticipateEvent upe9 = new UserParticipateEvent(null, u1, e6,true, false);
+		upeRepo.save(upe9);
 	
 		// ___________ FIN PARTICIPATION USER A EVENT _____________
 		// ___________ CREATION VOTE A EVENT _____________

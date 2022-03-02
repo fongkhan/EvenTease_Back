@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.solutec.entities.Event;
 import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
+import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
 
 @RestController @CrossOrigin("*")
 public class UserParticipateEventRest {
 	@Autowired
 	private UserParticipateEventRepository upeRepo;
+	@Autowired
+	private EventRepository eventRepo;
 
 	@GetMapping("event/participant")
 	public Iterable<UserParticipateEvent> getAllParticipants(){
@@ -75,7 +78,8 @@ public class UserParticipateEventRest {
 	}
 	
 	@PostMapping("event/participant/event")
-	public List<UserParticipateEvent> getParticipantbyEvent(@RequestBody Event event){
-		return upeRepo.findByEvent(event);
+	public List<UserParticipateEvent> getParticipantbyEvent(@RequestBody Long id){
+		Optional<Event> e = eventRepo.findById(id);
+		return upeRepo.findByEvent(e.get());
 	}
 }
