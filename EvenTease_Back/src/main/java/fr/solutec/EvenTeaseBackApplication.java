@@ -148,8 +148,15 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		FriendRequestRepo.save(fr2);
 		FriendRequest fr3 = new FriendRequest(null, u3, u4, 3);
 		FriendRequestRepo.save(fr3);
-		Groupe g = new Groupe(null, "Ukraine", u1, null);
-		groupRepo.save(g);
+		
+		Groupe g1 = new Groupe(null, "Ukraine", u1, null);
+		groupRepo.save(g1);
+		Groupe g2 = new Groupe(null, "RS vs UK", u1, null);
+		groupRepo.save(g2);
+		Groupe g3 = new Groupe(null, "Battle code", u1, null);
+		groupRepo.save(g3);
+		Groupe g4 = new Groupe(null, "dev-1-2022", u1, null);
+		groupRepo.save(g4);
 		
 		/*
 		 * Attention, l'idéal aurait été de faire une recherche avec le nom du groupe mais
