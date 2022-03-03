@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.FriendRequest;
-import fr.solutec.entities.User;
 import fr.solutec.repository.FriendRequestRepository;
 
 
@@ -21,10 +20,14 @@ public class FriendRequestRest {
 	private FriendRequestRepository FriendRequestRepo;
 	
 	// _________________ DEBUT ALL FRIEND_REQUEST ___________________
-	@PostMapping("friendrequest/{id}")
+	@GetMapping("friendrequest/receveur/{id}")
 	public Iterable<FriendRequest> getMyFriendRequest(@PathVariable Long id){
-		
-		return FriendRequestRepo.findByDemandeurId(id);
+		return FriendRequestRepo.findByReceveurId(id);
+	}
+	
+	@GetMapping("friendrequest/receveur/{id}/{statut}")
+	public Iterable<FriendRequest> getMyFriendRequest(@PathVariable Long id, @PathVariable int statut){
+		return FriendRequestRepo.findByReceveurIdAndStatut(id, statut);
 	}
 	// _________________ FIN ALL FRIEND_REQUEST ___________________
 	
@@ -55,8 +58,8 @@ public class FriendRequestRest {
 		return FriendRequestRepo.findAll();
 	}
 	
-	@GetMapping("friendrequest/{id}/{id2}/{statut}")
-	public Iterable<FriendRequest> allMyFriend(@PathVariable Long id, @PathVariable Long id2, @PathVariable int statut) {
-		return FriendRequestRepo.findByDemandeurIdOrReceveurIdAndStatut(id, id2, statut);	
+	@GetMapping("friendrequest/{id}/{statut}")
+	public Iterable<FriendRequest> allMyFriend(@PathVariable Long id,@PathVariable int statut) {
+		return FriendRequestRepo.getByDemandeurorReceveurAndAccept(id, statut);	
 	}
 }
