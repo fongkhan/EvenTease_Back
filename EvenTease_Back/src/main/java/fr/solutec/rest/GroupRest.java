@@ -29,15 +29,11 @@ public class GroupRest {
 	private UserRepository userRepo;
 
 	// _________________ DEBUT CREATION GROUPE ___________________
-	@PostMapping("group/create")
+	@PostMapping("group")
 	public Groupe addGroup(@RequestBody Groupe g) {
 		return groupRepo.save(g);
 	}
 
-	@PostMapping("group")
-	public Groupe addGroupBidule(@RequestBody Groupe g) {
-		return groupRepo.save(g);
-	}
 
 	@PostMapping("group/user/{logins}")
 	public Groupe addGroupWithUser(@RequestBody Groupe g, @PathVariable String[] logins) {
