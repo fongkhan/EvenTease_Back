@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -46,6 +47,9 @@ public class User {
     private String town;
     private String description;
     private Boolean isPublic;
+    
+    @Lob
+    private Byte[] profilePic;
     
 
 //    @OneToMany(mappedBy = "user") @JsonIgnore
