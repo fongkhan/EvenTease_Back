@@ -84,19 +84,19 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		userRepo.save(u5);
 		// _________________ FIN CREATION USER ___________________
 		// _________________ CREATION EVENT ___________________
-		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null, null, null);
+		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble",null, u1, null, null, null);
 		eventRepo.save(e1);
-		Event e2 = new Event(null, "petit lazer game", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit", u2, null, null, null);
+		Event e2 = new Event(null, "petit lazer game", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit",null, u2, null, null, null);
 		eventRepo.save(e2);
-		Event e3 = new Event(null, "maxpea organise 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem", u2, null, null, null);
+		Event e3 = new Event(null, "maxpea organise 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem",null, u2, null, null, null);
 		eventRepo.save(e3);
-		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"Reniop gatio ipsum Lorem", u2, null, null, null);
+		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"Reniop gatio ipsum Lorem",null, u2, null, null, null);
 		eventRepo.save(e4);
-		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"Ukiop vesto ipsum Lorem", u1, null, null, null);
+		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"Ukiop vesto ipsum Lorem",null, u1, null, null, null);
 		eventRepo.save(e5);
-		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem", u3, null, null, null);
+		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem",null, u3, null, null, null);
 		eventRepo.save(e6);
-		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"Vapsm ipsum Rigth Lorem", u4, null, null, null);
+		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"Vapsm ipsum Rigth Lorem",null, u4, null, null, null);
 		eventRepo.save(e7);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
