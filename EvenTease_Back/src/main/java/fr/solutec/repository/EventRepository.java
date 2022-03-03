@@ -19,5 +19,6 @@ public interface EventRepository extends CrudRepository<Event, Long>{
 	public List<Event> trouverEventByOrganizerLogin(String login);
 	
 	public List<Event> findByOrganizer(User organizer);
+	public List<Event> findByOrganizerId(Long id);
 
 }

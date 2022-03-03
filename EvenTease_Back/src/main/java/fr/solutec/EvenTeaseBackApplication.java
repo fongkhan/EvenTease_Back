@@ -72,29 +72,31 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
 		
 		// _________________ CREATION USER ___________________
-		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.", false);
+		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous,\nJe suis très sympa et adore me prendre des cuites à la tourtel pamplemousse.", false, null);
 		userRepo.save(u1);
-		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true);
+		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut,\nJ'aime me bourrer a la 86 car 8 MORTS 6 BLESSÉS ... MA LUBULULE", true, null);
 		userRepo.save(u2);
-		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true);
+		User u3 = new User( null, "youssb", "youssb@gmail.com", "test3", "youssef", "BAISSI", d.parse("20/09/1998"), "0652014862", "72541", "Trifouilli-les-oies", "coucou,\nj'adore les melon que je lèche ( ͡° ͜ʖ ͡°).", true, null);
 		userRepo.save(u3);
-		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("08/06/1999"), "0662435798", "59114", "Terdeghem", "Hello, vous connaissez Shotgun ? c'est super pratique", true);
+		User u4 = new User( null, "louisd", "louisd@gmail.com", "test4", "louis", "DELESTRE", d.parse("08/06/1999"), "0662435798", "59114", "Terdeghem", "Hello, vous connaissez Shotgun ? c'est super pratique", true, null);
 		userRepo.save(u4);
+		User u5 = new User( null, "zhizhou", "zhizhou@gmail.com", "test5", "zhi", "ZHOU", d.parse("08/06/1975"), "0785493217", "75114", "Beijing", "你好, 新年快乐.", true, null);
+		userRepo.save(u5);
 		// _________________ FIN CREATION USER ___________________
 		// _________________ CREATION EVENT ___________________
 		Event e1 = new Event(null, "barbecue", d.parse("26/02/2022"), "Paris", false, "On va se cramer ensemble", u1, null, null, null);
 		eventRepo.save(e1);
-		Event e2 = new Event(null, "petit lazer game les boys", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit cul", u2, null, null, null);
+		Event e2 = new Event(null, "petit lazer game", d.parse("27/02/2022"), "Paris", true,"fait attention à ton petit", u2, null, null, null);
 		eventRepo.save(e2);
-		Event e3 = new Event(null, "maxpea organise 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e3 = new Event(null, "maxpea organise 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem", u2, null, null, null);
 		eventRepo.save(e3);
-		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"Reniop gatio ipsum Lorem", u2, null, null, null);
 		eventRepo.save(e4);
-		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u1, null, null, null);
+		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"Ukiop vesto ipsum Lorem", u1, null, null, null);
 		eventRepo.save(e5);
-		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u3, null, null, null);
+		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"Lorem ipsum ipsum Lorem", u3, null, null, null);
 		eventRepo.save(e6);
-		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u4, null, null, null);
+		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"Vapsm ipsum Rigth Lorem", u4, null, null, null);
 		eventRepo.save(e7);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
@@ -146,8 +148,15 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		FriendRequestRepo.save(fr2);
 		FriendRequest fr3 = new FriendRequest(null, u3, u4, 3);
 		FriendRequestRepo.save(fr3);
-		Groupe g = new Groupe(null, "Ukraine", u1, null);
-		groupRepo.save(g);
+		
+		Groupe g1 = new Groupe(null, "Ukraine", u1, null);
+		groupRepo.save(g1);
+		Groupe g2 = new Groupe(null, "RS vs UK", u1, null);
+		groupRepo.save(g2);
+		Groupe g3 = new Groupe(null, "Battle code", u1, null);
+		groupRepo.save(g3);
+		Groupe g4 = new Groupe(null, "dev-1-2022", u1, null);
+		groupRepo.save(g4);
 		
 		/*
 		 * Attention, l'idéal aurait été de faire une recherche avec le nom du groupe mais
