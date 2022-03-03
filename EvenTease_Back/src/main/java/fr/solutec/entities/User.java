@@ -49,7 +49,7 @@ public class User {
     private Boolean isPublic;
     
     @Lob
-    private Byte[] profilePic;
+    private byte[] profilePic;
     
 
 //    @OneToMany(mappedBy = "user") @JsonIgnore
