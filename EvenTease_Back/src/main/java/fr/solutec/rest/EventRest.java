@@ -26,8 +26,9 @@ public class EventRest {
 		return eventRepo.save(e);
 	}
 	
-	@PutMapping("event/update")
-	public Event updateEvent(@RequestBody Event e) {
+	@PutMapping("event/update/{id}")
+	public Event updateEvent(@PathVariable Long id, @RequestBody Event e) {
+		e.setId(id);
 		return eventRepo.save(e);
 	}
 	
@@ -36,8 +37,8 @@ public class EventRest {
 		return eventRepo.findAll();
 	}
 	
-	@PostMapping("eventid")
-	public Optional<Event> getEventById(@RequestBody Long id){
+	@GetMapping("event/{id}")
+	public Optional<Event> getEventById(@PathVariable Long id){
 		return eventRepo.findById(id);
 	}
 	
