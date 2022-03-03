@@ -9,4 +9,5 @@ import fr.solutec.entities.Vote;
 
 public interface VoteRepository extends CrudRepository<Vote, Long>{
 	public List<Vote> findByEvent(Event event);
+	public List<Vote> findByEventId(Long id);
 }

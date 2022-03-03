@@ -36,7 +36,7 @@ public class Event {
 	private String description;
 	
 	@Lob
-	private Byte[] picture;
+	private byte[] picture;
 	
 	@ManyToOne
 	private User organizer;

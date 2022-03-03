@@ -1,5 +1,7 @@
 package fr.solutec.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.Vote;
+import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.VoteRepository;
 
 @RestController @CrossOrigin("*")
 public class VoteRest {
 	@Autowired
 	private VoteRepository voteRepo;
+	@Autowired
+	private EventRepository eventRepo;
 	
 	// _________________ ALL VOTE ___________________
 	@GetMapping("event/vote")
@@ -34,5 +39,10 @@ public class VoteRest {
 	public Vote updateVote(@PathVariable Long id,@RequestBody Vote v) {
 		v.setId(id);
 		return voteRepo.save(v);
+	}
+	
+	@GetMapping("event/vote/{id}")
+	public List<Vote> searchVote(@PathVariable Long id, Vote v) {
+		return voteRepo.findByEventId(id);
 	}
 }

@@ -108,7 +108,6 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe3);
 		UserParticipateEvent upe4 = new UserParticipateEvent(null, u2, e5,true, false);
 		upeRepo.save(upe4);
-		
 		UserParticipateEvent upe5 = new UserParticipateEvent(null, u2, e6,true, false);
 		upeRepo.save(upe5);
 		UserParticipateEvent upe6 = new UserParticipateEvent(null, u2, e7,true, false);
