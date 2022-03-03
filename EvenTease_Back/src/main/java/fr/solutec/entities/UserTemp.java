@@ -28,7 +28,6 @@ import lombok.NoArgsConstructor;
 		public String mail;
 	    @Column(nullable=false)
 		private String surname;
-	    
 		private String name;
 	    @Temporal(TemporalType.DATE)
 		private Date birthDate;

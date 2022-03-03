@@ -55,9 +55,8 @@ public class FriendRequestRest {
 		return FriendRequestRepo.findAll();
 	}
 	
-	@GetMapping("friendrequest/{id}/{id2}")
-	public Iterable<FriendRequest> allMyFriend(@PathVariable Long id, @PathVariable Long id2) {
-		id = id2;
-		return FriendRequestRepo.findByDemandeurIdOrReceveurId(id, id2);	
+	@GetMapping("friendrequest/{id}/{id2}/{statut}")
+	public Iterable<FriendRequest> allMyFriend(@PathVariable Long id, @PathVariable Long id2, @PathVariable int statut) {
+		return FriendRequestRepo.findByDemandeurIdOrReceveurIdAndStatut(id, id2, statut);	
 	}
 }

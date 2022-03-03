@@ -4,7 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import fr.solutec.entities.Event;
 import fr.solutec.entities.FriendRequest;
+import fr.solutec.entities.Groupe;
 import fr.solutec.entities.ShopListAnswerUser;
 import fr.solutec.entities.ShoppingList;
 import fr.solutec.entities.User;
@@ -58,6 +59,9 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	private ShopListAnswerUserRepository slauRepo;
 	
 	
+	@Autowired
+	private GroupRepository groupRepo;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvenTeaseBackApplication.class, args);
 	}
@@ -86,11 +90,11 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		eventRepo.save(e3);
 		Event e4 = new Event(null, "maxpea organise 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
 		eventRepo.save(e4);
-		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e5 = new Event(null, "gadjo participe party 1", d.parse("27/02/2022"), "Paris", true,"oyeah", u1, null, null, null);
 		eventRepo.save(e5);
-		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e6 = new Event(null, "gadjo participe party 2", d.parse("27/02/2022"), "Paris", true,"oyeah", u3, null, null, null);
 		eventRepo.save(e6);
-		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u2, null, null, null);
+		Event e7 = new Event(null, "gadjo participe party 3", d.parse("27/02/2022"), "Paris", true,"oyeah", u4, null, null, null);
 		eventRepo.save(e7);
 		// _________________ FIN CREATION EVENT ___________________
 		// ____________ PARTICIPATION USER A EVENT ______________
@@ -107,6 +111,12 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		upeRepo.save(upe5);
 		UserParticipateEvent upe6 = new UserParticipateEvent(null, u2, e7,true, false);
 		upeRepo.save(upe6);
+		UserParticipateEvent upe7 = new UserParticipateEvent(null, u4, e6,true, false);
+		upeRepo.save(upe7);
+		UserParticipateEvent upe8 = new UserParticipateEvent(null, u3, e6,true, false);
+		upeRepo.save(upe8);
+		UserParticipateEvent upe9 = new UserParticipateEvent(null, u1, e6,true, false);
+		upeRepo.save(upe9);
 	
 		// ___________ FIN PARTICIPATION USER A EVENT _____________
 		// ___________ CREATION VOTE A EVENT _____________
@@ -136,6 +146,35 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		FriendRequestRepo.save(fr2);
 		FriendRequest fr3 = new FriendRequest(null, u3, u4, 3);
 		FriendRequestRepo.save(fr3);
+		Groupe g = new Groupe(null, "Ukraine", u1, null);
+		groupRepo.save(g);
+		
+		/*
+		 * Attention, l'idéal aurait été de faire une recherche avec le nom du groupe mais
+		 * vu qu'on peut avoir plusieurs groupes avec le même nom,
+		 * j'ai choisi la facilité en recherchant par id ; 
+		 * du coup il faut être sûr que un groupe a bien cet id pour que ça marche
+		 */
+		addMembreToGroup("fongkhan", (long) 26);
+		addMembreToGroup("youssb", (long) 26);
+
+	}
+	
+	public void addMembreToGroup(String login, Long id) {
+		Optional<Groupe> g = groupRepo.findById(id);
+		if(!g.isPresent()) {
+			System.out.println("l'id du groupe entré n'existe pas, vérifier les id des groupe et modifier le numero dans addMembreToGroup()");
+		}
+		else {
+			Optional<User> u = userRepo.findByLogin(login);
+			if(!g.isPresent()) {
+				System.out.println("l'user que vous voulez rajouter au groupe n'existe pas");
+			}
+			else {
+				g.get().getMembres().add(u.get());
+				groupRepo.save(g.get());
+			}
+		}
 	}
 
 

@@ -23,7 +23,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor @AllArgsConstructor @Data
-@Entity @Table(name="Users")
+@Entity
 public class User {
 	@Id @GeneratedValue
 	private Long id;
@@ -41,11 +41,13 @@ public class User {
     @Temporal(TemporalType.DATE)
 	private Date birthDate;
     private String phone;
+    
     private String zipCode;
     private String town;
     private String description;
     private Boolean isPublic;
     
+
 //    @OneToMany(mappedBy = "user") @JsonIgnore
 //    Set<UserParticipateEvent> participant;
 }
