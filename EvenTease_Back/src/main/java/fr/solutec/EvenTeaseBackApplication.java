@@ -72,7 +72,7 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 	DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
 		
 		// _________________ CREATION USER ___________________
-		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charelville-Mezieres", "bonjour à tous, Je suis très sympa et adore me balader dans Paris.", false, null);
+		User u1 = new User( null, "fongkhan", "fong.vu@hotmail.fr", "test", "Alexis", "VUADELLE", d.parse("12/01/1998"), "0648602152", "08000", "Charleville-Mezieres", "bonjour à tous, Je suis très sympa et adore me balader dans Paris.", false, null);
 		userRepo.save(u1);
 		User u2 = new User(null, "maxpea", "maxlekekedu01@gmail.com", "test2", "maxime", "PEAN", d.parse("12/01/1995"), "0645846297", "08520", "Aiglemont", "Salut, oi c'est axie j'adore les soirées open air", true, null);
 		userRepo.save(u2);
