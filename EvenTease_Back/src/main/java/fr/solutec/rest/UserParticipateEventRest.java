@@ -81,8 +81,8 @@ public class UserParticipateEventRest {
 		return upeRepo.findByUserId(id);
 	}
 	
-	@PostMapping("event/participant/event")
-	public List<UserParticipateEvent> getParticipantbyEvent(@RequestBody Long id){
+	@GetMapping("participant/event/{id}")
+	public List<UserParticipateEvent> getParticipantbyEvent(@PathVariable Long id){
 		Optional<Event> e = eventRepo.findById(id);
 		return upeRepo.findByEvent(e.get());
 	}

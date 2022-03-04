@@ -37,8 +37,8 @@ public class EventRest {
 		return eventRepo.findAll();
 	}
 	
-	@PostMapping("eventid")
-	public Optional<Event> getEventById(@RequestBody Long id){
+	@GetMapping("event/{id}")
+	public Optional<Event> getEventById(@PathVariable Long id){
 		return eventRepo.findById(id);
 	}
 	
