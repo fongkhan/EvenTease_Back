@@ -56,6 +56,12 @@ public class GroupRest {
 
 		return groupRepo.findAll();
 	}
+	
+	@GetMapping("groupe/{id}")
+	public Optional<Groupe> getMyGroupId(@PathVariable long id) {
+
+		return groupRepo.findById(id);
+	}
 
 	// _________________ DEBUT ALL MY_GROUP ___________________
 	@PostMapping("mygroup")
