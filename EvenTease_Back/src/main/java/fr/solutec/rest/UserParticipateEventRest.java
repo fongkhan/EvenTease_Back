@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.solutec.entities.Event;
-import fr.solutec.entities.User;
 import fr.solutec.entities.UserParticipateEvent;
 import fr.solutec.repository.EventRepository;
 import fr.solutec.repository.UserParticipateEventRepository;
@@ -31,7 +30,7 @@ public class UserParticipateEventRest {
 		return upeRepo.findAll();
 	}
 	
-	@PostMapping("event/participant/participate")
+	@PostMapping("event/addparticipant")
 	public UserParticipateEvent addParticipantsByParticipate(@RequestBody UserParticipateEvent upe){
 		if(upe.getEvent() != null && upe.getUser() != null) {
 			upe.setParticipate(true);

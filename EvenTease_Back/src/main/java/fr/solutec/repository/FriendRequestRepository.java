@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import fr.solutec.entities.FriendRequest;
-import fr.solutec.entities.User;
 
 public interface FriendRequestRepository extends CrudRepository<FriendRequest, Long> {
 	public List<FriendRequest> findByDemandeurId(Long id);
