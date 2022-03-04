@@ -148,13 +148,13 @@ public class EvenTeaseBackApplication implements CommandLineRunner {
 		FriendRequest fr3 = new FriendRequest(null, u3, u4, 3);
 		FriendRequestRepo.save(fr3);
 		
-		Groupe g1 = new Groupe(null, "Ukraine", u1, null);
+		Groupe g1 = new Groupe(null, "Famille Dupont", u1, null);
 		groupRepo.save(g1);
-		Groupe g2 = new Groupe(null, "RS vs UK", u1, null);
+		Groupe g2 = new Groupe(null, "Team grillades", u1, null);
 		groupRepo.save(g2);
-		Groupe g3 = new Groupe(null, "Battle code", u1, null);
+		Groupe g3 = new Groupe(null, "Promo 2021", u1, null);
 		groupRepo.save(g3);
-		Groupe g4 = new Groupe(null, "dev-1-2022", u1, null);
+		Groupe g4 = new Groupe(null, "Dev 01 Solutec", u1, null);
 		groupRepo.save(g4);
 		
 		/*
